@@ -1,0 +1,27 @@
+h1 {
+	color: #E86419;
+	margin-top: 5vh;
+}
+h2 {
+	margin-top: 5vh;
+	margin-bottom: 3vh;
+}
+h4 {
+	margin-top: 5vh;
+}
+footer {
+	height: 10vh;
+}
+label {
+	font-weight: 500;
+	margin-top: 10vh;
+}
+button {
+	margin-top: 5vh;
+}
+body {
+	background-color: WhiteSmoke;
+}
+.form-control-lg {
+	margin-bottom: 1vh;
+}

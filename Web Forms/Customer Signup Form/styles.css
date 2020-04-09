@@ -1,0 +1,27 @@
+h1 {
+	color: #E86419;
+	margin-top: 5vh;
+}
+h2 {
+	margin-top: 5vh;
+}
+
+footer {
+	height: 10vh;
+}
+label {
+	font-weight: 500;
+	margin-top: 3vh;
+}
+.form-check-label {
+	margin-top: 0vh;
+}
+button {
+	margin-top: 4vh;
+}
+body {
+	background-color: WhiteSmoke;
+}
+tariff-button {
+	margin-top: 1vh;
+}

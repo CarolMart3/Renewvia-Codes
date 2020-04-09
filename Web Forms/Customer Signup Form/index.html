@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+	<!-- Custom CSS -->
+	<link rel="stylesheet" href="styles.css">
+
+	<!-- Title -->
+	<title>Renewvia Signup Form</title>
+</head>
+
+
+
+
+
+
+
+
+
+
+
+
+<body>
+
+	<div class="container" style="background: WhiteSmoke">
+		<div class="row">
+			<div class="col">
+
+
+
+				<div id="part1">
+					<h1 class="display-5"> Renewvia New Customer Signup Form</h1>
+
+					<h2>Step 1: Reserve an account number</h2>
+					<form class="needs-validation"  id="accountNumberForm" novalidate>
+						<div class="form-group">
+							<label for="formFiller"> Who is filling out this form? </label>
+							<select name= "formFiller" id="formFiller" class="form-control form-control-lg">
+								<option> Tobias </option>
+								<option> Brian </option>
+								<option> Gordon </option>
+								<option> Kennedy Odhiambo </option>
+								<option> Kennedy Wekesa </option>
+								<option> Elisha from Ringiti </option>
+								<option> Douglas </option>
+								<option> Chris </option>
+								<option> Ugo </option>
+								<option> Samuel </option>
+								<option> Carol </option>
+							</select>
+							<small id="customerTypeHelp" class="form-text text-muted"> </small>
+						</div>
+
+						<div class="form-group">
+							<label for="customerAccountNumberInput">Put the customer's new account number here.</label>
+							<input type="text" class="form-control form-control-lg" name="customerAccountNumber" id="customerAccountNumberInput" placeholder="" maxlength="6" pattern="(RN|ND|rn|nd|11|12|13|14|15|50|51|98|99)[0-9]{4}\b" required/>
+							<small id="customerAccountNumberHelp" class="form-text text-muted">Enter the 6-digit account number. Remember, start with: RN (Ringiti), ND (Ndeda), 13 (Kalobeyei Settlement), 14 (Kalobeyei Town), 15 (Ngurunit), 50 (Oloibiri), or 51 (Akipelai). </small>
+							<div class="valid-feedback"> Looks good! </div>
+							<div class="invalid-feedback"> Must be 6 digits, starting with a correct code, and no letters after the code. </div>
+						</div>
+						<button type="button" id="accountNumberFormSubmitButton" class="btn btn-dark btn-lg btn-block" onclick="reserveAccountNumber();"> Reserve number </button>
+
+					</form>
+
+					<br>
+					<h5 id="accountNumberFormResponseText"></h5>
+				</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+				<div id="part2">
+
+					<h2>Step 2: Submit new customer information</h2>
+					<form class="needs-validation" id="customerDetailsForm" novalidate>
+
+						<div class="form-group">
+							<label for="transactionID"> Customer Account Number </label>
+							<input type="text" class="form-control form-control-lg" name="customerAccountNumber" id="reservedAccountNumber" required>
+						</div>
+
+
+
+						<div class="form-group">
+							<label for="transactionID"> Payment Confirmation Code </label>
+							<input type="text" class="form-control form-control-lg" name="transactionID" id="transactionID" required>
+							<small id="transactionIDHelp" class="form-text text-muted">If a payment cannot be found with (1) the confirmation code you put here, and (2) the correct amount, the customer signup will be rejected.</small>
+							<div class="invalid-feedback"> You must enter a confirmation code. </div>
+						</div>
+
+
+						<div class="form-group">
+							<label for="firstName"> Name 1 (Kenyan Surname, Nigerian First Name) </label>
+							<input type="text" class="form-control form-control-lg" name="firstName" id="firstName" required>
+							<small id="firstNameHelp" class="form-text text-muted">For Oliech Gordon Odhiamo, here put Oliech. For Uhuru Muigai Kenyatta, here put Uhuru.</small>
+							<div class="invalid-feedback"> Please enter a name! </div>
+						</div>
+
+						<div class="form-group">
+							<label for="middleName"> Name 2 (Kenyan First/Middle Name, Nigerian Middle Name) </label>
+							<input type="text" class="form-control form-control-lg" name="middleName" id="middleName" required>
+							<small id="middleNameHelp" class="form-text text-muted">For Oliech Gordon Odhiamo, here put Gordon. For Uhuru Muigai Kenyatta, here put Muigai. </small>
+							<div class="invalid-feedback"> Please enter a name! </div>
+						</div>
+
+						<div class="form-group">
+							<label for="lastName"> Name 3 (Kenyan Family Name, Nigerian Surname) </label>
+							<input type="text" class="form-control form-control-lg" name="lastName" id="lastName" required>
+							<small id="lastNameHelp" class="form-text text-muted">For Oliech Gordon Odhiamo, here put Odhiambo. For Uhuru Muigai Kenyatta, here put Kenyatta. </small>
+							<div class="invalid-feedback"> Please enter a name! </div>
+						</div>
+
+						<div class="form-group">
+							<label for="countryCode"> Country Code </label>
+							<select id="countryCode" name="countryCode" class="form-control form-control-lg">
+								<option> +234 </option>
+								<option> +254 </option>
+							</select>
+							<small id="countryCode" class="form-text text-muted"> </small>
+						</div>
+
+						<div class="form-group">
+							<label for="phoneNumber"> Phone Number </label>
+							<input type="tel" class="form-control form-control-lg" name="phoneNumber" id="phoneNumber" pattern="[0-9]{9,10}" maxlength="10" required>
+							<small id="phoneNumberHelp" class="form-text text-muted">This will be the phone number where customers receive SMS payment notifications. Leave out the initial 0. </small>
+							<div class="valid-feedback"> Looks good! </div>
+							<div class="invalid-feedback"> Please include the entire phone number. Don't include the initial 0. </div>
+						</div>
+
+						<div class="form-group">
+							<label for="poleNumber"> Pole Number </label>
+							<input type="tel" class="form-control form-control-lg" name="poleNumber" id="poleNumber" pattern=[0-9]* required>
+							<small id="poleNumberHelp" class="form-text text-muted"> </small>
+							<div class="valid-feedback"> Looks good! </div>
+							<div class="invalid-feedback"> Numbers only. </div>
+						</div>
+
+
+
+
+
+
+
+						<div class="form-group">
+							<label for="meterSerial"> Meter Serial </label>
+
+
+
+							<button type="button" id="showQR" class="btn btn-secondary btn-lg btn-block" style="margin-top: 0vh" onclick="showElement(QRStuff)"> Scan Meter Serial </button> <br>
+							<div class="text-center" id="QRStuff" hidden>
+								<div id="loadingMessage">🎥 Unable to access video stream (please make sure you have a webcam enabled)</div>
+								<canvas id="canvas" hidden></canvas>
+								<div id="output" hidden>
+									<div id="outputMessage" hidden></div>
+									<div hidden><b>Data:</b> <span id="outputData"></span></div>
+								</div>
+							</div>
+
+
+
+							<input type="text" class="form-control form-control-lg" name="meterSerial" id="meterSerial" pattern="SM(5R|5r|16R|16r|60R|60r|60RP|60rp|60Rp|60rP)-0[0-9]-0{4}[a-fA-F0-9]{4}\b" required>
+							<small id="meterSerialHelp" class="form-text text-muted">Full serial number is required.</small>
+							<div class="valid-feedback"> Looks good! </div>
+							<div class="invalid-feedback"> Check the meter serial number again. Dashes (-) are required, and every digit must be correct. Also, the last four digits can only contain numbers and the letters A, B, C, D, E, or F.  </div>
+						</div>
+
+
+						<div class="form-group">
+							<label for="tariff"> Tariff </label>
+
+							<button type="button" id="residentialTariffButton" class="tariff-button btn btn-secondary btn-lg btn-block" style="margin-bottom: 1vh;margin-top: 1vh" onclick="setTariff('Residential','residentialTariffButton')"> Residential </button>
+							<button type="button" id="commercialTariffButton" class="tariff-button btn btn-secondary btn-lg btn-block" style="margin-bottom: 1vh" onclick="setTariff('Commercial','commercialTariffButton')"> Commercial </button>
+							<button type="button" id="religiousTariffButton" class="tariff-button btn btn-secondary btn-lg btn-block" style="margin-bottom: 1vh" onclick="setTariff('Religious','religiousTariffButton')"> Religious </button>
+							<button type="button" id="freeTariffButton" class="tariff-button btn btn-secondary btn-lg btn-block" style="margin-bottom: 1vh" onclick="setTariff('Free','freeTariffButton')"> Free </button>
+
+
+
+							<input type="text" class="form-control form-control-lg" name="tariff" id="tariff" hidden required>
+							<small id="tariffHelp" class="form-text text-muted">Pick an option above.</small>
+							<div class="valid-feedback"> Looks good! </div>
+							<div class="invalid-feedback"> Pick an option above.</div>
+						</div>
+
+
+
+
+						<div class="form-group">
+							<label for="customerType"> Customer Type </label>
+							<select name="customerType" id="customerType" class="form-control form-control-lg">
+								<option> Residential </option>
+								<option> Banda </option>
+								<option> Bar/Restaurant </option>
+								<option> BMU </option>
+								<option> Church </option>
+								<option> Conference Hall </option>
+								<option> Guest House </option>
+								<option> Health Clinic/Dispensary </option>
+								<option> Institution </option>
+								<option> Kinyozi </option>
+								<option> Pool Hall </option>
+								<option> Saloon/Salon </option>
+								<option> School </option>
+								<option> Shop </option>
+								<option> Video Hall </option>
+							</select>
+							<small id="customerTypeHelp" class="form-text text-muted"> </small>
+						</div>
+
+						<br><br>
+						<button type="button" id="customerDetailsFormSubmitButton" class="btn btn-dark btn-lg btn-block" onclick="submitDetails()"> Register new customer </button>
+						<button type="reset" class="btn btn-warning btn-lg btn-block"> Clear form </button>
+
+					</form>
+
+
+
+
+
+
+
+
+					<h5 id="customerDetailsFormResponseText"></h5>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+
+
+
+
+
+<script src="functions.js"></script>
+<script src="./qr/docs/jsQR.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+
+<footer></footer>
+</html>

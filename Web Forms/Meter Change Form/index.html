@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+	<!-- Custom CSS -->
+	<link rel="stylesheet" href="styles.css">
+
+	<!-- Title -->
+	<title>Renewvia Meter Change Form</title>
+</head>
+
+
+
+
+
+
+
+
+
+
+
+
+<body>
+
+	<form class = "needs-validation" id = "meterChangeForm" novalidate>
+
+		<div class="container">
+			<div>
+				<div class="row">
+					<div class="col">
+						<h1 class="display-5"> Renewvia Meter Change Form</h1>
+						<h2 style="margin-bottom: 0vh">What do you want to do?</h2>
+					</div>
+				</div>
+
+
+
+				<div class="form-group">
+					<div class="row">
+						<div class="col">
+							<button type="button" id="replaceMeterButton" class="btn btn-dark btn-lg btn-block meterChangeTypeButton" onclick="meterChangeTypeButtonHandler('replaceMeterButton', 'meterChangeTypeButton', 'replacement', 'changeType')"> Replace a customer's meter </button>
+						</div>
+						<div class="col">
+							<button type="button" id="swapMetersButton" class="btn btn-dark btn-lg btn-block meterChangeTypeButton" onclick="meterChangeTypeButtonHandler('swapMetersButton', 'meterChangeTypeButton', 'swap', 'changeType')"> Swap two customers' meters </button>
+						</div>
+					</div>
+
+					<div>
+						<input type="text" class="form-control form-control-lg d-none" name="changeType" id="changeType">
+					</div>
+
+
+				</div>
+
+			</div>
+		</div>
+
+
+
+
+
+
+
+		<div class="d-none" id="meterDetails">
+			<div class="container">
+				<div class="form-group">
+
+					<div class="row">
+						<div class="col">
+							<h4 id="meterSerial1Label" for="meterSerial"> Meter Serial 1 </h4>
+						</div>
+					</div>
+
+
+					<div class="row">
+						<div class="col">
+							<div class="text-center" id="QRStuff">
+								<div id="loadingMessage"> </div>
+								<!-- 🎥 Unable to access video stream (please make sure you have a webcam enabled)</div> -->
+								<canvas id="canvas" hidden></canvas>
+								<div id="output" hidden>
+									<div id="outputMessage" hidden></div>
+									<div hidden><b>Data:</b> <span id="outputData"></span></div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+
+					<div class="row">
+						<div class="col">
+							<input type="text" class="form-control form-control-lg" name="meterSerial1" id="meterSerial1" pattern="SM(5R|5r|16R|16r|60R|60r|60RP|60rp|60Rp|60rP)-0[0-9]-0{4}[a-fA-F0-9]{4}\b" required>
+							<div class="valid-feedback"> Looks good! </div>
+							<div class="invalid-feedback"> Check the meter serial number again. Dashes (-) are required, and every digit must be correct. Also, the last four digits can only contain numbers and the letters A, B, C, D, E, or F.  </div>
+						</div>
+					</div>
+
+
+					<div class="row">
+						<div class ="col">
+							<select name= "meterSiteCode1" id="meterSiteCode1" class="form-control form-control-lg">
+								<option> ND </option>
+								<option> RN </option>
+								<option> 13 </option>
+								<option> 14 </option>
+								<option> 15 </option>
+								<option> 50 </option>
+								<option> 51 </option>
+								<option> Unassigned </option>
+							</select>
+							<small id="siteCode1Label" class="form-text text-muted"> Select the meter's site code. </small>
+						</div>
+
+						<div class="col">
+							<button type="button" id="showQR" class="btn btn-secondary btn-lg btn-block" style="margin-top: 0vh" onclick="cameraTester()"> Scan Meter </button> <br>
+						</div>
+					</div>
+
+
+				</div>
+			</div>
+
+
+
+
+
+
+			<div class = "container">
+				<div class="form-group">
+					<div class="row">
+						<div class="col">
+							<h4 id="meterSerial2Label" for="meterSerial2"> Meter Serial 2 </h4>
+						</div>
+					</div>
+
+
+					<div class="row">
+						<div class="col">
+							<div class="text-center" id="QRStuff2">
+								<div id="loadingMessage2"> </div>
+								<!-- 🎥 Unable to access video stream (please make sure you have a webcam enabled)</div> -->
+								<canvas id="canvas2" hidden></canvas>
+								<div id="output2" hidden>
+									<div id="outputMessage2" hidden></div>
+									<div hidden><b>Data:</b> <span id="outputData2"></span></div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+					<div class="row">
+						<div class="col">
+							<input type="text" class="form-control form-control-lg" name="meterSerial2" id="meterSerial2" pattern="SM(5R|5r|16R|16r|60R|60r|60RP|60rp|60Rp|60rP)-0[0-9]-0{4}[a-fA-F0-9]{4}\b" required>
+							<div class="valid-feedback"> Looks good! </div>
+							<div class="invalid-feedback"> Check the meter serial number again. Dashes (-) are required, and every digit must be correct. Also, the last four digits can only contain numbers and the letters A, B, C, D, E, or F.  </div>
+						</div>
+					</div>
+
+					
+
+					<div class="row">
+						<div class="col">
+							<select name= "meterSiteCode2" id="meterSiteCode2" class="form-control form-control-lg">
+								<option> ND </option>
+								<option> RN </option>
+								<option> 13 </option>
+								<option> 14 </option>
+								<option> 15 </option>
+								<option> 50 </option>
+								<option> 51 </option>
+								<option> Unassigned </option>
+							</select>
+							<small id="siteCode2Label" class="form-text text-muted"> Select the meter's site code. </small>
+						</div>
+
+						<div class="col">
+							<button type="button" id="showQR2" class="btn btn-secondary btn-lg btn-block" style="margin-top: 0vh" onclick="cameraTester2()"> Scan Meter </button> <br>
+						</div>
+					</div>
+
+
+				</div>
+			</div>
+
+
+
+
+
+			<div class = "container">
+				<button type="button" id="formSubmitButton" class="btn btn-dark btn-lg btn-block" onclick="submitDetails('meterChangeForm', 'formSubmitButton', 'Meter change form')"> Submit </button>
+				<button type="reset" class="btn btn-secondary btn-lg btn-block"> Clear form </button>
+			</div>
+
+		</form>
+
+
+
+
+
+
+
+
+		<h5 id="showText"></h5>
+	</div>
+
+
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<script src="functions.js"></script>
+<script src="./qr/docs/jsQR.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+
+<footer></footer>
+</html>

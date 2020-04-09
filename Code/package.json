@@ -1,0 +1,21 @@
+{
+  "name": "douglas",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon ./index.js",
+    "test": "node tests.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.635.0",
+    "axios": "^0.18.1",
+    "mysql": "^2.17.1",
+    "telerivet": "^1.4.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}
